@@ -102,7 +102,7 @@ class Color{
 
 //----------- O T H E R   F U N C T I O N S -------------------
             //scale, angle, steps, xpos, ypos
-var ninePattern = new Snake(0.5, 3, 35, 350, 250);
+var ninePattern = new Snake(0.5, 30, 35, 350, 250);
 var oldX;
 var oldY;
 
