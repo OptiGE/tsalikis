@@ -21,6 +21,7 @@ class Snake{
   
   move(){
     
+	
     //trig to orient base vector, times scale for size, times the number of steps to take.
     
     //console.log(this.currAngle + ":" + this.scale + ":" + this.currStep + ":" + cos(this.currAngle * Math.PI / 180) );
@@ -61,11 +62,14 @@ class Color{
 		this.factor = 1;
 	}
 	
-	
-	addred(){
-		this.red += 1;
+	//Calling this will give the pattern a color depending on where it is in each small loop
+	relativeStep(maxr, maxg, maxb, snake){
+		this.red = (maxr / snake.steps) * snake.currStep;
+		this.green = (maxg / snake.steps) * snake.currStep;
+		this.blue = (maxb / snake.steps) * snake.currStep;
 	}
 	
+	//Calling this in each drawloop will make the colors cycle through all the colors of the rainbow
 	rainbowStep(){
 		
 		if(this.red <= 255 && this.red >= 0){
@@ -101,8 +105,9 @@ class Color{
 
 
 //----------- O T H E R   F U N C T I O N S -------------------
-            //scale, angle, steps, xpos, ypos
-var ninePattern = new Snake(0.5, 30, 35, 350, 250);
+            
+			              //scale, angle, steps, xpos, ypos
+var ninePattern = new Snake(5, 80, 80, 250, 380);
 var oldX;
 var oldY;
 
@@ -110,7 +115,7 @@ var myColor = new Color(0, 0, 0)
 
 function setup() {
   createCanvas(600, 600);
-  background(10);
+  background(0);
   var oldX = ninePattern.x;
   var oldY = ninePattern.y;
   
@@ -121,7 +126,7 @@ function draw() {
   //console.log(myColor.red + ": is the red value");
   stroke(myColor.red, myColor.green, myColor.blue);
   strokeWeight(4);
-  myColor.rainbowStep();
+  myColor.relativeStep(255, 0, 255, ninePattern);
   
   //Actual drawing
   ninePattern.move();
