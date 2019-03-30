@@ -1,0 +1,4 @@
+In this folder are pictures taken from the 1st generation of the program. Before colors were introduced. 
+The pictures are labeled according to the patterns angle and number of steps.
+
+Eg 170-13 means angle 170 and 13 steps.
