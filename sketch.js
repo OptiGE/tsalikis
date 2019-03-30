@@ -106,6 +106,12 @@ class Color{
 
 //----------- O T H E R   F U N C T I O N S -------------------
             
+
+//------------------------------------------------------------------------------------------------------			
+//------------------------------CHANGE THE PARAMETERS IN NEW SNAKE TO CREATE NEW PATTERNS---------------
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+
 			              //scale, angle, steps, xpos, ypos
 var ninePattern = new Snake(5, 80, 80, 250, 380);
 var oldX;
@@ -126,7 +132,7 @@ function draw() {
   //console.log(myColor.red + ": is the red value");
   stroke(myColor.red, myColor.green, myColor.blue);
   strokeWeight(4);
-  myColor.relativeStep(255, 0, 255, ninePattern);
+  myColor.relativeStep(255, 0, 255, ninePattern); //change this to rainbow step for pretty patterns
   
   //Actual drawing
   ninePattern.move();
