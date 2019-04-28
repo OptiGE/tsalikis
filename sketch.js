@@ -1,3 +1,5 @@
+
+
 // ---------------- S N A K E   C L A S S ----------------------
 
 class Snake{
@@ -103,45 +105,83 @@ class Color{
 }
 
 
-
-//----------- O T H E R   F U N C T I O N S -------------------
+//----------- S E T U P,   D R A W   A N D   V A R I A B L E S -------------------
             
-
-//------------------------------------------------------------------------------------------------------			
-//------------------------------CHANGE THE PARAMETERS IN NEW SNAKE TO CREATE NEW PATTERNS---------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-
-			              //scale, angle, steps, xpos, ypos
-var ninePattern = new Snake(7, 100, 11, 200, 380);
 var oldX;
 var oldY;
 
 var myColor = new Color(0, 0, 0)
 
+var angleSlider;
+var angleValue = 100;
+
+var stepSlider;
+var stepValue = 11;
+
+var sizeSlider;
+var sizeValue = 9;
+
+var resetButton;
+var allValues;
+
 function setup() {
-  createCanvas(600, 600);
-  background(0);
-  var oldX = ninePattern.x;
-  var oldY = ninePattern.y;
+  
+  createCanvas($(window).width(), 0.8 * $(window).height());
+  
+  resetSketch();
+  
+  createP('Controls');
+  resetButton = createButton("Draw!");
+  
+  angleSlider = createSlider(0, 360, 100);
+  angleSlider.style('width', '20vw');
+  
+  stepSlider = createSlider(1, 100, 11);
+  stepSlider.style('width', '20vw');
+  
+  sizeSlider = createSlider(1, 200, 9);
+  sizeSlider.style('width', '20vw');
+  
+  resetButton.mousePressed(resetSketch);
+  resetButton.style('width', '10vw');
+  
+  allValues = createP('Values: ');
   
 }
 
+
 function draw() { 
 
-  //console.log(myColor.red + ": is the red value");
+  //Setup for thickness, color and such
   stroke(myColor.red, myColor.green, myColor.blue);
   strokeWeight(4);
-  myColor.rainbowStep(); //change this to rainbow step for pretty patterns
+  myColor.rainbowStep();
+  
+  //Drawing control values to screen
+  angleValue = angleSlider.value();
+  stepValue = stepSlider.value();
+  sizeValue = sizeSlider.value();
+  allValues.html("Values -> Angle: " + angleValue + " Steps: " + stepValue + " Size: " + sizeValue);
+  
+  
   
   //Actual drawing
   ninePattern.move();
-  
+ 
   line(oldX, oldY, ninePattern.x, ninePattern.y);
   
   oldX = ninePattern.x;
   oldY = ninePattern.y;
+}
 
+
+
+function resetSketch(){
+	ninePattern = new Snake(sizeValue, angleValue, stepValue, 0.5 * $(window).width(), 600);
+	background(0);
+	oldX = ninePattern.x;
+	oldY = ninePattern.y;
+	myColor = new Color(0, 0, 0)
 }
 
 
