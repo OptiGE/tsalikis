@@ -132,6 +132,8 @@ function setup() {
   
   createP('Controls');
   resetButton = createButton("Draw!");
+  resetButton.mousePressed(resetSketch);
+  resetButton.style('width', '10vw');
   
   angleSlider = createSlider(0, 360, 100);
   angleSlider.style('width', '20vw');
@@ -142,11 +144,11 @@ function setup() {
   sizeSlider = createSlider(1, 200, 9);
   sizeSlider.style('width', '20vw');
   
-  resetButton.mousePressed(resetSketch);
-  resetButton.style('width', '10vw');
-  
   allValues = createP('Values: ');
   
+  saveButton = createButton("Save!");
+  saveButton.mousePressed(saveSketch);
+  saveButton.style('width', '10vw');
 }
 
 
@@ -184,6 +186,9 @@ function resetSketch(){
 	myColor = new Color(0, 0, 0)
 }
 
+function saveSketch(){
+	saveCanvas((angleValue + "-" + stepValue + '.jpg'));
+}
 
 
 
