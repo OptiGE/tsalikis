@@ -121,34 +121,19 @@ var stepValue = 11;
 var sizeSlider;
 var sizeValue = 9;
 
+
 var resetButton;
 var allValues;
 
 function setup() {
   
-  createCanvas($(window).width(), 0.8 * $(window).height());
+  var myCanvas = createCanvas($(window).width(), 0.8 * $(window).height());
+  myCanvas.parent("sketchContainer");
+
   
-  resetSketch();
   
-  createP('Controls');
-  resetButton = createButton("Draw!");
-  resetButton.mousePressed(resetSketch);
-  resetButton.style('width', '10vw');
+  resetSketch();  
   
-  angleSlider = createSlider(0, 360, 100);
-  angleSlider.style('width', '20vw');
-  
-  stepSlider = createSlider(1, 100, 11);
-  stepSlider.style('width', '20vw');
-  
-  sizeSlider = createSlider(1, 200, 9);
-  sizeSlider.style('width', '20vw');
-  
-  allValues = createP('Values: ');
-  
-  saveButton = createButton("Save!");
-  saveButton.mousePressed(saveSketch);
-  saveButton.style('width', '10vw');
 }
 
 
@@ -160,11 +145,9 @@ function draw() {
   myColor.rainbowStep();
   
   //Drawing control values to screen
-  angleValue = angleSlider.value();
-  stepValue = stepSlider.value();
-  sizeValue = sizeSlider.value();
-  allValues.html("Values -> Angle: " + angleValue + " Steps: " + stepValue + " Size: " + sizeValue);
-  
+  angleValue = select("#angleSlider").value();
+  stepValue = select("#stepSlider").value();
+  sizeValue = select("#sizeSlider").value();
   
   
   //Actual drawing
