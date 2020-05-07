@@ -3,10 +3,10 @@
 // ---------------- S N A K E   C L A S S ----------------------
 
 class Snake{
-  constructor(scale, angle, steps, xpos, ypos){
+  constructor(scale, angle, steps, xpos, ypos, offsetX, offsetY){
     //Current position of snake
-    this.x = xpos;
-    this.y = ypos;
+    this.x = xpos + offsetX;
+    this.y = ypos + offsetY;
     
     //The length of one step
     this.baseVector = new Vector(1, 1);
@@ -121,6 +121,8 @@ var stepValue = 11;
 var sizeSlider;
 var sizeValue = 9;
 
+var offsetX = 0;
+var offsetY = 0;
 
 var resetButton;
 var allValues;
@@ -148,6 +150,8 @@ function draw() {
   angleValue = parseInt(select("#angleSlider").value());
   stepValue = parseInt(select("#stepSlider").value());
   sizeValue = parseInt(select("#sizeSlider").value());
+  offsetX = parseInt(select("#offsetX").value());
+  offsetY = parseInt(select("#offsetY").value());
   
   
   //Actual drawing
@@ -162,7 +166,7 @@ function draw() {
 
 
 function resetSketch(){
-	ninePattern = new Snake(sizeValue, angleValue, stepValue, 0.5 * $(window).width(), 600);
+	ninePattern = new Snake(sizeValue, angleValue, stepValue, 0.5 * $(window).width(), 600, offsetX, offsetY);
 	background(0);
 	oldX = ninePattern.x;
 	oldY = ninePattern.y;
