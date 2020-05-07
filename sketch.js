@@ -145,9 +145,9 @@ function draw() {
   myColor.rainbowStep();
   
   //Drawing control values to screen
-  angleValue = select("#angleSlider").value();
-  stepValue = select("#stepSlider").value();
-  sizeValue = select("#sizeSlider").value();
+  angleValue = parseInt(select("#angleSlider").value());
+  stepValue = parseInt(select("#stepSlider").value());
+  sizeValue = parseInt(select("#sizeSlider").value());
   
   
   //Actual drawing
